@@ -17,7 +17,6 @@ export default class immoc_gp extends Component {
     return (
       <View style={styles.container}>
         <RnTabNavigation/>
-        
       </View>
     );
   }
@@ -26,11 +25,8 @@ export default class immoc_gp extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    // justifyContent: 'center',
-    // alignItems: 'center',
     backgroundColor: '#F5FCFF',
   },
-  
 });
 
 AppRegistry.registerComponent('immoc_gp', () => immoc_gp);
