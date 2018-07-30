@@ -3,7 +3,7 @@ import {View, Image, Text, StyleSheet, TouchableOpacity} from 'react-native';
 import TabNavigator from 'react-native-tab-navigator';
 import TabView from './TabView';
 import NavigationBar from './NavigationBar'
-
+import ListView from './ListView'
 export default class RnTabNavigation extends Component {
     constructor(props) {
         super(props);
@@ -53,7 +53,7 @@ export default class RnTabNavigation extends Component {
                         <TabView
                             content={
                                 <View>
-                                    <Text>polular</Text>
+                                    <ListView></ListView>
                                 </View>
                             }
                             style={{

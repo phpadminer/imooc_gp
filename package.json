@@ -15,6 +15,7 @@
 		"babel-jest": "23.4.2",
 		"babel-preset-react-native": "4.0.0",
 		"jest": "23.4.2",
+		"mockjs": "^1.0.1-beta3",
 		"react-test-renderer": "15.4.2"
 	},
 	"jest": {
