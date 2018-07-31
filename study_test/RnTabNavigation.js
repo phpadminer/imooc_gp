@@ -4,7 +4,7 @@ import TabNavigator from 'react-native-tab-navigator';
 import TabView from './TabView';
 import NavigationBar from './NavigationBar'
 import Toast,{DURATION} from 'react-native-easy-toast';
-
+import FetchTest from './FetchTest'
 let TestData = {
     "data": {
         "projects": [
@@ -139,9 +139,24 @@ export default class RnTabNavigation extends Component {
                     renderSelectedIcon={() => <Image style={styles.tab_image}
                                                      source={require("./images/ic_favorite.png")}/>}
                     onPress={() => this.setState({selectedTab: 'favorite'})}>
-                    <TabView
-                        content={<Text>favorite</Text>}
-                    />
+                    <View style={{flex: 1}}>
+                        <NavigationBar
+                            hide={false}
+                            leftButton={
+                                this._renderButton(require('./images/ic_arrow_back_white_36pt.png'))
+                            }
+                            title={'favorite'}
+                            rightButton={this._renderButton(require('./images/ic_star.png'))}
+
+                        />
+                        <TabView
+                            content={
+                                <FetchTest></FetchTest>
+                            }
+
+                        />
+                    </View>
+
                 </TabNavigator.Item>
                 <TabNavigator.Item
                     selected={this.state.selectedTab === 'star'}
