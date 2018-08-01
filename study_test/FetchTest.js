@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import {
     Text,View
 } from 'react-native'
+import HttpUtils from '../HttpUtils'
 class FetchTest extends Component {
     constructor(props){
         super(props);
@@ -10,8 +11,7 @@ class FetchTest extends Component {
         }
     }
     fetchTest(url){
-        fetch(url)
-            .then(response=>response.json())
+        HttpUtils.get(url)
             .then(result=>{
                 this.setState({
                     result:JSON.stringify(result)
@@ -22,7 +22,7 @@ class FetchTest extends Component {
         return (
             <View>
                 <Text
-                    onPress={()=>this.fetchTest()}
+                    onPress={()=>this.fetchTest('https://www.easy-mock.com/mock/5b601530e5570610098cc7a1/imooc/2/2/test/query')}
                 >测试Get</Text>
                 <Text>{this.state.result}</Text>
             </View>
