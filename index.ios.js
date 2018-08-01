@@ -12,6 +12,7 @@ import {
   View
 } from 'react-native';
 import RnTabNavigation from './study_test/RnTabNavigation'
+
 export default class immoc_gp extends Component {
   render() {
     return (

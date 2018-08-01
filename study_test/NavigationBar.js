@@ -33,7 +33,9 @@ export default class NavigationBar extends Component {
         // 状态栏父级样式
         statusBarContainer:View.propTypes.style,
         // 文字的样式
-        text:PropTypes.object
+        text:PropTypes.object,
+        // 导航栏样式
+        NavBarContainer:View.propTypes.style,
     }
     static defaultProps = {
         title: 'Default Title',
@@ -46,6 +48,9 @@ export default class NavigationBar extends Component {
         statusBarContainer:{
             backgroundColor:'red'
         },
+        NavBarContainer:{
+            backgroundColor:'red'
+        },
         text:{
             fontSize:22
         }
@@ -55,7 +60,7 @@ export default class NavigationBar extends Component {
         let LeftButton = this.props.leftButton ? this.props.leftButton : <Text></Text>;
         let TitleView = this.props.titleView ? this.props.titleView : <Text style={[styles.text,this.props.text]}>{this.props.title}</Text>;
         let RightButton = this.props.rightButton ? this.props.rightButton : <Text></Text>;
-        let Content = this.props.hide ? null : <View style={styles.NavBarContainer}>
+        let Content = this.props.hide ? null : <View style={[styles.NavBarContainer,this.props.NavBarContainer]}>
             <View style={styles.NavBarLeftBut}>
                 {LeftButton}
             </View>
@@ -89,7 +94,7 @@ const styles = StyleSheet.create({
         flexDirection:'row',
         justifyContent: 'space-between',
         alignItems:'center',
-        backgroundColor: '#ccc',
+
     },
     NavBarLeftBut: {
         marginLeft: 10
