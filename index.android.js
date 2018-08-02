@@ -11,7 +11,7 @@ import {
   Text,
   View
 } from 'react-native';
-import RnTabNavigation from './study_test/RnTabNavigation'
+import RnTabNavigation from './js/page/RnTabNavigation'
 export default class immoc_gp extends Component {
   render() {
     return (

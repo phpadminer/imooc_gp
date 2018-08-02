@@ -85,6 +85,7 @@ export default class NavigationBar extends Component {
 }
 const styles = StyleSheet.create({
     NavBar:{
+        backgroundColor:'white'
     },
     StatusBarContainer:{
         height:Platform.OS==='ios'?STATUS_HEIGHT_FOR_IOS:0,
@@ -101,7 +102,7 @@ const styles = StyleSheet.create({
     },
     NavBarTitle: {
         justifyContent: 'center',
-        alignItems:'center',
+        alignItems:'center'
     },
     NavBarRightBut: {
         marginRight:10

@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import {
     Text,View
 } from 'react-native'
-import HttpUtils from '../HttpUtils'
+import HttpUtils from '../js/utils/HttpUtils'
 class FetchTest extends Component {
     constructor(props){
         super(props);

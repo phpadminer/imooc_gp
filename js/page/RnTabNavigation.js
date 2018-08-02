@@ -1,15 +1,16 @@
 import React, {Component} from 'react';
 import {View, Image, Text, StyleSheet, TouchableOpacity, RefreshControl, ListView} from 'react-native';
 import TabNavigator from 'react-native-tab-navigator';
-import TabView from './TabView';
-import NavigationBar from './NavigationBar'
-import FetchTest from './FetchTest'
-import Popular from '../js/page/Popular'
+import TabView from '../common/TabView';
+import NavigationBar from '../common/NavigationBar'
+import Popular from './Popular/Popular'
+
 export default class RnTabNavigation extends Component {
     constructor(props) {
         super(props);
         this.state = {
             selectedTab: 'polular',
+            text:''
         }
     }
 
@@ -20,9 +21,9 @@ export default class RnTabNavigation extends Component {
                 <TabNavigator.Item
                     selected={this.state.selectedTab === 'polular'}
                     title="polular"
-                    renderIcon={() => <Image style={styles.tab_image} source={require("./images/ic_polular.png")}/>}
+                    renderIcon={() => <Image style={styles.tab_image} source={require("../../res/images/ic_polular.png")}/>}
                     renderSelectedIcon={() => <Image style={styles.tab_image}
-                                                     source={require("./images/ic_polular.png")}/>}
+                                                     source={require("../../res/images/ic_polular.png")}/>}
                     badgeText="1"
                     onPress={() => this.setState({selectedTab: 'polular'})}>
 
@@ -35,13 +36,16 @@ export default class RnTabNavigation extends Component {
                             NavBarContainer={{
                                 backgroundColor:"#2196f3"
                             }}
+
                         />
                         <TabView
                             content={
                                 <View>
                                     <Popular/>
+
                                 </View>
                             }
+
                         />
                     </View>
 
@@ -49,9 +53,9 @@ export default class RnTabNavigation extends Component {
                 <TabNavigator.Item
                     selected={this.state.selectedTab === 'favorite'}
                     title="favorite"
-                    renderIcon={() => <Image style={styles.tab_image} source={require("./images/ic_favorite.png")}/>}
+                    renderIcon={() => <Image style={styles.tab_image} source={require("../../res/images/ic_favorite.png")}/>}
                     renderSelectedIcon={() => <Image style={styles.tab_image}
-                                                     source={require("./images/ic_favorite.png")}/>}
+                                                     source={require("../../res/images/ic_favorite.png")}/>}
                     onPress={() => this.setState({selectedTab: 'favorite'})}>
                     <View style={{flex: 1}}>
                         <NavigationBar
@@ -65,7 +69,7 @@ export default class RnTabNavigation extends Component {
                         />
                         <TabView
                             content={
-                                <FetchTest></FetchTest>
+                                <Text>test</Text>
                             }
 
                         />
@@ -75,9 +79,9 @@ export default class RnTabNavigation extends Component {
                 <TabNavigator.Item
                     selected={this.state.selectedTab === 'star'}
                     title="star"
-                    renderIcon={() => <Image style={styles.tab_image} source={require("./images/ic_star.png")}/>}
+                    renderIcon={() => <Image style={styles.tab_image} source={require("../../res/images/ic_star.png")}/>}
                     renderSelectedIcon={() => <Image style={styles.tab_image}
-                                                     source={require("./images/ic_star.png")}/>}
+                                                     source={require("../../res/images/ic_star.png")}/>}
                     onPress={() => this.setState({selectedTab: 'star'})}>
                     <TabView
                         content={<Text>star</Text>}
@@ -86,8 +90,8 @@ export default class RnTabNavigation extends Component {
                 <TabNavigator.Item
                     selected={this.state.selectedTab === 'my'}
                     title="my"
-                    renderIcon={() => <Image style={styles.tab_image} source={require("./images/ic_my.png")}/>}
-                    renderSelectedIcon={() => <Image style={styles.tab_image} source={require("./images/ic_my.png")}/>}
+                    renderIcon={() => <Image style={styles.tab_image} source={require("../../res/images/ic_my.png")}/>}
+                    renderSelectedIcon={() => <Image style={styles.tab_image} source={require("../../res/images/ic_my.png")}/>}
                     onPress={() => this.setState({selectedTab: 'my'})}>
                     <TabView
                         content={<Text>my</Text>}
