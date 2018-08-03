@@ -17,10 +17,12 @@ class PopularPage extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            dataSource: new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2})
+            dataSource: new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2}),
+            load:false
         }
 
     }
+
     componentDidMount() {
         this.LoadData()
     }
@@ -28,11 +30,13 @@ class PopularPage extends Component {
     renderDom(data) {
         return <PopularTab data={data}/>
     }
+
     LoadData() {
         PopularDao.getDataByGet('https://api.github.com/search/repositories', {'q': this.props.type})
             .then(res => {
                 this.setState({
                     dataSource: this.state.dataSource.cloneWithRows(res.items),
+                    load:true
                 })
             })
             .catch(err => {
@@ -41,14 +45,25 @@ class PopularPage extends Component {
     }
 
     render() {
-        return (
-            <View style={{flex: 1}}>
-                <ListView
-                    dataSource={this.state.dataSource}
-                    renderRow={(rowData) => this.renderDom(rowData)}
-                />
-            </View>
-        )
+
+            if (!this.state.load) {
+                return (<View style={{
+                    flex:1,
+                    justifyContent:'center',
+                    alignItems:'center'
+                }}>
+                    <Text>页面加载中...</Text>
+                </View>)
+            }else{
+                return (<View style={{flex: 1}}>
+                    <ListView
+                        dataSource={this.state.dataSource}
+                        renderRow={(rowData) => this.renderDom(rowData)}
+                    />
+                </View>)
+            }
+
+
     }
 }
 
@@ -57,6 +72,7 @@ class PopularTab extends Component {
     constructor(props) {
         super(props);
     }
+
     render() {
         return (
             <View style={styles.PopularPageContainer}>
@@ -69,7 +85,8 @@ class PopularTab extends Component {
                 <View style={styles.PopularPageFooter}>
                     <View style={{flexDirection: 'row', alignItems: 'center'}}>
                         <Text>Auhtor:</Text>
-                        <LoadImage style={{marginLeft:5,width:22,height:22,borderRadius:11}} url={{uri:this.props.data.owner.avatar_url}}/>
+                        <LoadImage style={{marginLeft: 5, width: 22, height: 22, borderRadius: 11}}
+                                   url={{uri: this.props.data.owner.avatar_url}}/>
                     </View>
                     <View style={{flexDirection: 'row', alignItems: 'center'}}>
                         <Text>Stars:</Text>
@@ -77,7 +94,7 @@ class PopularTab extends Component {
                     </View>
 
                     <View style={{flexDirection: 'row', alignItems: 'center'}}>
-                        <Image style={{marginLeft: 5,marginRight:5, width: 22, height: 22}}
+                        <Image style={{marginLeft: 5, marginRight: 5, width: 22, height: 22}}
                                source={require('../../../res/images/ic_star.png')}/>
 
                     </View>
@@ -109,12 +126,12 @@ export default class Popular extends Component {
                     fontSize: 15,
                 }}
             >
-                <PopularPage type="ios" tabLabel="ios"/>
-                <PopularPage type="javascript" tabLabel="javascript"/>
-                <PopularPage type="python" tabLabel="python"/>
-                <PopularPage type="php" tabLabel="php"/>
-                <PopularPage type="go" tabLabel="go"/>
-                <PopularPage type="shell" tabLabel="shell"/>
+                <PopularPage type="ios" tabLabel="ios"><Text>222</Text></PopularPage>
+                <PopularPage type="javascript" tabLabel="javascript"><Text>222</Text></PopularPage>
+                <PopularPage type="python" tabLabel="python"><Text>222</Text></PopularPage>
+                <PopularPage type="php" tabLabel="php"><Text>222</Text></PopularPage>
+                <PopularPage type="go" tabLabel="go"><Text>222</Text></PopularPage>
+                <PopularPage type="shell" tabLabel="shell"><Text>222</Text></PopularPage>
             </ScrollableTabView>
         );
     }
@@ -129,14 +146,14 @@ const styles = StyleSheet.create({
         marginVertical: 5,
         padding: 2,
         borderRadius: 6,
-        shadowColor:'#4682B4',
-        shadowOffset:{
-            width:0.5,
-            height:0.5
+        shadowColor: '#4682B4',
+        shadowOffset: {
+            width: 0.5,
+            height: 0.5
         },
-        shadowRadius:3,
-        shadowOpacity:0.3,
-        elevation:2,
+        shadowRadius: 3,
+        shadowOpacity: 0.3,
+        elevation: 2,
     },
     PopularPageHeader: {
         fontSize: 20,

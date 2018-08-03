@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {View, Image, Text, StyleSheet, TouchableOpacity, RefreshControl, ListView} from 'react-native';
+import {View, Image, Text, StyleSheet,} from 'react-native';
 import TabNavigator from 'react-native-tab-navigator';
 import TabView from '../common/TabView';
 import NavigationBar from '../common/NavigationBar'
@@ -42,7 +42,6 @@ export default class RnTabNavigation extends Component {
                             content={
                                 <View>
                                     <Popular/>
-
                                 </View>
                             }
 
