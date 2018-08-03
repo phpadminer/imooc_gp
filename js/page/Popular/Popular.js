@@ -53,13 +53,6 @@ class PopularPage extends Component {
 }
 
 class PopularTab extends Component {
-    static defaultProps = {
-        data: {
-            owner: {
-                'avatar_url': 'https://avatars3.githubusercontent.com/u/1645051?v=4'
-            }
-        }
-    }
 
     constructor(props) {
         super(props);
@@ -84,7 +77,7 @@ class PopularTab extends Component {
                     </View>
 
                     <View style={{flexDirection: 'row', alignItems: 'center'}}>
-                        <Image style={{marginLeft: 5, width: 22, height: 22}}
+                        <Image style={{marginLeft: 5,marginRight:5, width: 22, height: 22}}
                                source={require('../../../res/images/ic_star.png')}/>
 
                     </View>
@@ -133,9 +126,17 @@ const styles = StyleSheet.create({
         borderColor: "#CCC",
         marginLeft: 5,
         marginRight: 5,
-        marginVertical: 3,
+        marginVertical: 5,
         padding: 2,
-        borderRadius: 6
+        borderRadius: 6,
+        shadowColor:'#4682B4',
+        shadowOffset:{
+            width:0.5,
+            height:0.5
+        },
+        shadowRadius:3,
+        shadowOpacity:0.3,
+        elevation:2,
     },
     PopularPageHeader: {
         fontSize: 20,
